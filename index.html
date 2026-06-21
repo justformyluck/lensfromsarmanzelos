@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lens from Sarman & Zelos - Tam Senkronize Sürüm</title>
+    <title>Lens from Sarman & Zelos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,7 +115,7 @@
                     <button onclick="switchTab('upload')" id="nav-upload" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900 flex items-center"><i class="fa-solid fa-cloud-arrow-up mr-1.5 text-amberAccent"></i> Fotoğraf Yükle</button>
                 </nav>
                 <div class="flex items-center space-x-4">
-                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🔄 Canlı Eşitleme Aktif</span>
+                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🤝 Canlı Bulut Senkronu</span>
                     <button onclick="lockApp()" class="p-2 text-cocoa-500 hover:text-red-500 transition-colors bg-cream-50 rounded-xl border border-cream-300 shadow-sm"><i class="fa-solid fa-lock"></i></button>
                 </div>
             </div>
@@ -143,64 +143,4 @@
                         <button onclick="filterGallery('all')" id="filter-all" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cocoa-900 text-white shadow-sm">✨ Tüm Fotoğraflar</button>
                         <button onclick="filterGallery('doga')" id="filter-doga" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-cocoa-700 border border-cream-300">🗻 Doğa & Manzara</button>
                         <button onclick="filterGallery('hayvan')" id="filter-hayvan" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-cocoa-700 border border-cream-300">🐧 Sevimli Hayvanlar</button>
-                        <button onclick="filterGallery('seyahat')" id="filter-seyahat" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-cocoa-700 border border-cream-300">✈️ Seyahat ve Keşifler</button>
-                        <button onclick="togglePrivateRoom()" id="filter-us" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-cocoa-700 border border-cream-300 flex items-center"><i class="fa-solid fa-heart-pulse mr-1.5 text-pink-500"></i> Bizim Odamız <i class="fa-solid fa-lock ml-1.5 text-[9px] text-cocoa-400"></i></button>
-                    </div>
-                </section>
-
-                <section id="photoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></section>
-            </div>
-
-            <div id="tab-stickers" class="hidden space-y-8 tab-content">
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                    <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center"><i class="fa-solid fa-cat text-4xl text-orange-400"></i></div><h4 class="font-serif font-semibold text-sm">Sarman Kedi</h4></div>
-                    <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center"><i class="fa-solid fa-dog text-4xl text-amber-600"></i></div><h4 class="font-serif font-semibold text-sm">Uykucu Pati</h4></div>
-                    <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center text-2xl">🐧👾</div><h4 class="font-serif font-semibold text-sm">Piksel Penguen</h4></div>
-                    <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center"><i class="fa-solid fa-paw text-4xl text-teal-500"></i></div><h4 class="font-serif font-semibold text-sm">Tatlı Tilki</h4></div>
-                    <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center"><i class="fa-solid fa-carrot text-4xl text-amberAccent"></i></div><h4 class="font-serif font-semibold text-sm">Tombul Tavşan</h4></div>
-                </div>
-            </div>
-
-            <div id="tab-upload" class="hidden space-y-8 tab-content">
-                <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-cream-300 space-y-6">
-                    <div class="space-y-2 border-b border-cream-300 pb-5">
-                        <h2 class="font-serif text-3xl font-bold text-cocoa-900">Yeni Bir Anı Kaydet</h2>
-                        <p class="text-xs text-cocoa-500">Yüklediğin her fotoğraf anında ikinizin ortak bulut günlüğüne işlenir.</p>
-                    </div>
-                    <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div class="space-y-1">
-                                <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğraf Başlığı</label>
-                                <input type="text" id="form-title" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="block text-xs font-bold text-cocoa-700 uppercase">Çekildiği Konum</label>
-                                <input type="text" id="form-loc" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none">
-                            </div>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Tarih</label>
-                            <input type="date" id="form-date" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğraf Seç</label>
-                            <input type="file" id="form-file" accept="image/*" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cocoa-900 file:text-white hover:file:bg-cocoa-800 focus:outline-none">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Anısı / Senin Yorumun</label>
-                            <textarea id="form-commentary" required rows="4" class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none"></textarea>
-                        </div>
-                        <button type="submit" id="submit-btn" class="w-full py-3 bg-amberAccent text-white text-xs font-bold rounded-xl hover:bg-amber-600 shadow-md flex items-center justify-center space-x-2">
-                            <span>Anıyı Günlüğe Ekle</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <div id="detailModal" class="fixed inset-0 bg-cocoa-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="max-w-4xl w-full bg-cream-50 rounded-3xl shadow-2xl border border-cream-300 overflow-hidden flex flex-col md:flex-row relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-50 w-8 h-8 bg-white/80 hover:bg-red-50 text-cocoa-900 rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-xmark"></i></button>
-            <div class="w-full md:w-1/2 bg-black flex items-center justify-center relative p-4" style="min-height: 400px;">
-                <div id="modal-container-style" class="w-full h-full flex items-center justify-center"><img id="modal-img" class="max-h-[500px] object-
+                        <button onclick="filterGallery('seyahat')" id="filter-seyahat" class="

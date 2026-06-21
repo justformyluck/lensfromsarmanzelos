@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lens from Sarman & Zelos - Canlı Sürüm</title>
+    <title>Lens from Sarman & Zelos - Gerçek Galerili Sürüm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Fraunces:ital,opsz,wght=0,9..144,300..700;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Fraunces:ital,opsz,wght=0,9..144,300..700;1,9..144,300..700&family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
@@ -51,7 +51,6 @@
 </head>
 <body class="bg-cream-100 text-cocoa-900 min-height-screen font-sans selection:bg-amber-100 selection:text-amberAccent relative overflow-x-hidden">
 
-    <!-- ARKA PLAN: 12 ADET GERÇEKÇİ ÇİÇEK STICKER'I -->
     <div class="fixed inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-40">
         <img class="absolute top-[6%] left-[4%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80" alt="Papatya">
         <img class="absolute top-[8%] left-[88%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform rotate-15" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80" alt="Gül">
@@ -62,12 +61,11 @@
         <img class="absolute top-[48%] left-[70%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-12" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=150&q=80" alt="Menekşe">
         <img class="absolute top-[60%] left-[52%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform -rotate-6" src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=150&q=80" alt="Kadife">
         <img class="absolute bottom-[28%] left-[15%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-18" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80" alt="Papatya">
-        <img class="absolute bottom-[25%] left-[78%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80" alt="Gül">
+        <img class="absolute bottom-[25%] left-[78%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Gül">
         <img class="absolute bottom-[6%] left-[5%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-45" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=150&q=80" alt="Menekşe">
         <img class="absolute bottom-[8%] left-[90%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform -rotate-18" src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=150&q=80" alt="Kadife">
     </div>
 
-    <!-- 1. GİRİŞ & ŞİFRE PANELİ -->
     <div id="lockScreen" class="fixed inset-0 bg-cream-100 z-50 flex flex-col items-center justify-center p-6">
         <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-20">
             <img class="absolute top-10 left-10 w-12 h-12 rounded-full border-2 border-white shadow-md object-cover" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80" alt="Papatya">
@@ -101,7 +99,6 @@
         </div>
     </div>
 
-    <!-- 2. ANA WEB ARAYÜZÜ -->
     <div id="mainApp" class="hidden min-h-screen flex flex-col fade-in relative z-10">
         <header class="bg-white/80 backdrop-blur-md border-b border-cream-300 sticky top-0 z-40 px-6 py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -118,7 +115,7 @@
                     <button onclick="switchTab('upload')" id="nav-upload" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900 flex items-center"><i class="fa-solid fa-cloud-arrow-up mr-1.5 text-amberAccent"></i> Fotoğraf Yükle</button>
                 </nav>
                 <div class="flex items-center space-x-4">
-                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">✨ Aktif & Güvenli Sürüm</span>
+                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">📸 Bulut Galeri Aktif</span>
                     <button onclick="lockApp()" class="p-2 text-cocoa-500 hover:text-red-500 transition-colors bg-cream-50 rounded-xl border border-cream-300 shadow-sm"><i class="fa-solid fa-lock"></i></button>
                 </div>
             </div>
@@ -154,7 +151,6 @@
                 <section id="photoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></section>
             </div>
 
-            <!-- B. STICKERS TAB -->
             <div id="tab-stickers" class="hidden space-y-8 tab-content">
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
                     <div class="bg-white/90 p-6 rounded-2xl border border-cream-300 text-center space-y-4"><div class="h-16 flex items-center justify-center"><i class="fa-solid fa-cat text-4xl text-orange-400"></i></div><h4 class="font-serif font-semibold text-sm">Sarman Kedi</h4></div>
@@ -165,12 +161,11 @@
                 </div>
             </div>
 
-            <!-- C. SADELEŞTİRİLMİŞ YÜKLEME PANELİ -->
             <div id="tab-upload" class="hidden space-y-8 tab-content">
-                <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-3xl border border-cream-300 shadow-xl space-y-6">
+                <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-cream-300 space-y-6">
                     <div class="space-y-2 border-b border-cream-300 pb-5">
                         <h2 class="font-serif text-3xl font-bold text-cocoa-900">Yeni Bir Anı Kaydet</h2>
-                        <p class="text-xs text-cocoa-500">Gezdiğiniz yerleri, başlık, tarih ve o anki eşsiz yorumunuzla buraya ekleyebilirsiniz.</p>
+                        <p class="text-xs text-cocoa-500">Telefonunun galerisinden gerçek bir fotoğraf seçip yükleyebilirsin sevgilim.</p>
                     </div>
                     <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -188,17 +183,22 @@
                             <input type="date" id="form-date" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none">
                         </div>
                         <div class="space-y-1">
-                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Anısı / Senin Yorumun (El Yazısı Formatı)</label>
+                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğraf Seç (Galeriden / Bilgisayardan)</label>
+                            <input type="file" id="form-file" accept="image/*" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cocoa-900 file:text-white hover:file:bg-cocoa-800 focus:outline-none">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Anısı / Senin Yorumun</label>
                             <textarea id="form-commentary" required rows="4" class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none"></textarea>
                         </div>
-                        <button type="submit" class="w-full py-3 bg-amberAccent text-white text-xs font-bold rounded-xl hover:bg-amber-600 shadow-md">Anıyı Günlüğe Ekle</button>
+                        <button type="submit" id="submit-btn" class="w-full py-3 bg-amberAccent text-white text-xs font-bold rounded-xl hover:bg-amber-600 shadow-md flex items-center justify-center space-x-2">
+                            <span>Anıyı Günlüğe Ekle</span>
+                        </button>
                     </form>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- 3. DETAY GÖRÜNÜMÜ MODAL -->
     <div id="detailModal" class="fixed inset-0 bg-cocoa-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="max-w-4xl w-full bg-cream-50 rounded-3xl shadow-2xl border border-cream-300 overflow-hidden flex flex-col md:flex-row relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 z-50 w-8 h-8 bg-white/80 hover:bg-red-50 text-cocoa-900 rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -229,8 +229,8 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT MOTORU (YEREL HAFIZA KALICILIĞI) -->
     <script>
+        const IMGBB_API_KEY = '8298b67a85726faff6e8b8f88d9ac33a'; // Senin özel anahtarın entegre edildi
         let memories = [];
 
         const initialMemories = [
@@ -257,11 +257,7 @@
         function checkPasscode() {
             let entered = '';
             document.querySelectorAll('.pin-box').forEach(i => entered += i.value);
-            if (entered === '9998') { 
-                bypassLock(); 
-            } else { 
-                document.getElementById('errorText').classList.remove('hidden'); 
-            }
+            if (entered === '9998') { bypassLock(); } else { document.getElementById('errorText').classList.remove('hidden'); }
         }
 
         const pins = document.querySelectorAll('.pin-box');
@@ -349,41 +345,68 @@
         
         async function handleDelete() { if(currentModalItem) { await deleteCard(currentModalItem.id, null); closeModal(); } }
 
+        // GERÇEK DOSYA YÜKLEME VE BULUT ENTEGRASYONU MOTORU
         async function handleUpload(event) {
             event.preventDefault();
-            const title = document.getElementById('form-title').value;
-            const location = document.getElementById('form-loc').value;
-            const date = document.getElementById('form-date').value;
-            const commentary = document.getElementById('form-commentary').value;
+            const submitBtn = document.getElementById('submit-btn');
+            const fileInput = document.getElementById('form-file');
+            
+            if(fileInput.files.length === 0) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Fotoğraf Buluta Uçuruluyor...</span>`;
 
-            const mockImages = [
-                "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80"
-            ];
-            const mockStickers = ["fa-cat text-orange-400", "fa-dog text-amber-600", "fa-carrot text-amberAccent", "fa-paw text-indigo-500"];
-            const tilts = ["tilt-left-small", "tilt-right-small", "tilt-left-med", "tilt-right-med"];
+            try {
+                // Dosyayı form verisine dönüştürme
+                const file = fileInput.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
 
-            const isUs = location.toLowerCase().includes('istanbul') || title.toLowerCase().includes('biz') || title.toLowerCase().includes('ikimiz');
+                // Otomatik ImgBB Bulut Yüklemesi
+                const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
 
-            const newMemory = {
-                title, location, date, commentary,
-                img: mockImages[Math.floor(Math.random() * mockImages.length)],
-                sticker: mockStickers[Math.floor(Math.random() * mockStickers.length)],
-                category: isUs ? 'us' : 'doga',
-                tilt: tilts[Math.floor(Math.random() * tilts.length)]
-            };
+                if (result.success) {
+                    const uploadedImageUrl = result.data.url;
+                    const title = document.getElementById('form-title').value;
+                    const location = document.getElementById('form-loc').value;
+                    const date = document.getElementById('form-date').value;
+                    const commentary = document.getElementById('form-commentary').value;
 
-            newMemory.id = Date.now();
-            memories.unshift(newMemory);
-            localStorage.setItem('lens_memories', JSON.stringify(memories));
-            renderGrid();
+                    const mockStickers = ["fa-cat text-orange-400", "fa-dog text-amber-600", "fa-carrot text-amberAccent", "fa-paw text-indigo-500"];
+                    const tilts = ["tilt-left-small", "tilt-right-small", "tilt-left-med", "tilt-right-med"];
+                    const isUs = location.toLowerCase().includes('istanbul') || title.toLowerCase().includes('biz') || title.toLowerCase().includes('ikimiz');
 
-            document.getElementById('uploadForm').reset();
-            alert("Anı başarıyla eklendi Zehra! ❤️");
-            switchTab('dashboard');
-            filterGallery('all');
+                    const newMemory = {
+                        id: Date.now(),
+                        title, location, date, commentary,
+                        img: uploadedImageUrl, // Artık internetteki gerçek kalıcı linkiniz!
+                        sticker: mockStickers[Math.floor(Math.random() * mockStickers.length)],
+                        category: isUs ? 'us' : 'doga',
+                        tilt: tilts[Math.floor(Math.random() * tilts.length)]
+                    };
+
+                    memories.unshift(newMemory);
+                    localStorage.setItem('lens_memories', JSON.stringify(memories));
+                    renderGrid();
+
+                    document.getElementById('uploadForm').reset();
+                    alert("Harika! Fotoğraf başarıyla yüklendi ve günlüğe işlendi Zehra! ❤️");
+                    switchTab('dashboard');
+                    filterGallery('all');
+                } else {
+                    alert("Yükleme sırasında bulut sunucusu bir hata verdi, lütfen tekrar dene.");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Bağlantı hatası! Fotoğraf yüklenemedi.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Anıyı Günlüğe Ekle</span>`;
+            }
         }
 
         function toggleViewMode(mode) {

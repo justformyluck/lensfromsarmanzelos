@@ -55,7 +55,6 @@
         <img class="absolute top-[6%] left-[4%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80">
         <img class="absolute top-[8%] left-[88%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform rotate-15" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80">
         <img class="absolute top-[15%] left-[45%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-6" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=150&q=80">
-        <img class="absolute top-[28%] left-[8%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform -rotate-45" src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=150&q=80">
     </div>
 
     <div id="lockScreen" class="fixed inset-0 bg-cream-100 z-50 flex flex-col items-center justify-center p-6">
@@ -89,7 +88,7 @@
     <div id="mainApp" class="hidden min-h-screen flex flex-col fade-in relative z-10">
         <header class="bg-white/80 backdrop-blur-md border-b border-cream-300 sticky top-0 z-40 px-6 py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-3 cursor-pointer" onclick="filterGallery('all')">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="filterGallery('all'); switchTab('dashboard');">
                     <div class="w-10 h-10 bg-amberAccent/10 text-amberAccent rounded-full flex items-center justify-center border border-amberAccent/20"><i class="fa-solid fa-camera-retro text-lg"></i></div>
                     <div>
                         <h2 class="font-serif text-2xl font-bold tracking-tight text-cocoa-900">lensfrom<span class="text-amberAccent italic">sarmanzelos</span></h2>
@@ -101,7 +100,7 @@
                     <button onclick="switchTab('upload')" id="nav-upload" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900 flex items-center"><i class="fa-solid fa-cloud-arrow-up mr-1.5 text-amberAccent"></i> Fotoğraf Yükle</button>
                 </nav>
                 <div class="flex items-center space-x-4">
-                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🤝 %100 Kararlı Senkronizasyon</span>
+                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🤝 Senkronizasyon Aktif</span>
                     <button onclick="lockApp()" class="p-2 text-cocoa-500 hover:text-red-500 transition-colors bg-cream-50 rounded-xl border border-cream-300 shadow-sm"><i class="fa-solid fa-lock"></i></button>
                 </div>
             </div>
@@ -273,9 +272,19 @@
             document.getElementById('mainApp').classList.add('hidden');
         }
 
+        // SEKMELER ARASI GEÇİŞ MOTORU (GÜNCELLENDİ)
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            
+            // Aktif menü butonunun görsel stilini güncelleme
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900";
+            });
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            if(activeBtn) {
+                activeBtn.className = "tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-white text-cocoa-900 shadow-sm";
+            }
         }
 
         function togglePrivateRoom() {
@@ -288,7 +297,22 @@
             }
         }
 
-        function filterGallery(cat) { currentFilter = cat; renderGrid(); }
+        // FİLTRELEME MOTORU (GÜNCELLENDİ)
+        function filterGallery(cat) { 
+            currentFilter = cat; 
+            renderGrid(); 
+            
+            // Filtre butonlarının aktiflik stilini düzenleme
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-cocoa-900', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-cocoa-700', 'border', 'border-cream-300');
+            });
+            const activeFilterBtn = document.getElementById(`filter-${cat}`);
+            if(activeFilterBtn) {
+                activeFilterBtn.classList.remove('bg-white', 'text-cocoa-700', 'border', 'border-cream-300');
+                activeFilterBtn.classList.add('bg-cocoa-900', 'text-white', 'shadow-sm');
+            }
+        }
 
         function renderGrid() {
             const grid = document.getElementById('photoGrid');
@@ -297,7 +321,10 @@
 
             filtered.forEach(item => {
                 const card = document.createElement('div');
-                card.className = `bg-white/95 backdrop-blur-xs p-5 rounded-2xl border border-cream-300 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer ${item.tilt} relative group overflow-hidden`;
+                const tiltClasses = ["tilt-left-small", "tilt-right-small", "tilt-left-med", "tilt-right-med"];
+                const currentTilt = item.tilt || tiltClasses[Math.floor(Math.random() * tiltClasses.length)];
+                
+                card.className = `bg-white/95 backdrop-blur-xs p-5 rounded-2xl border border-cream-300 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer ${currentTilt} relative group overflow-hidden`;
                 card.onclick = () => openModal(item.id);
                 card.innerHTML = `
                     <div onclick="deleteCard(${item.id}, event)" class="absolute left-3 top-3 opacity-0 group-hover:opacity-100 transition-all z-20 bg-white hover:bg-red-50 p-2 rounded-full border border-cream-300 text-red-500 shadow-sm"><i class="fa-solid fa-trash-can text-xs"></i></div>
@@ -338,6 +365,7 @@
         
         async function handleDelete() { if(currentModalItem) { await deleteCard(currentModalItem.id, null); closeModal(); } }
 
+        // FORM ONAYLAMA VE YAZMA MOTORU (SABİTLENDİ)
         async function handleUpload(event) {
             event.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
@@ -358,20 +386,24 @@
                 const newMemory = {
                     id: Date.now(),
                     title, location, date, commentary,
-                    img: imgUrl, // Doğrudan girilen link kalıcı olarak işleniyor
+                    img: imgUrl,
                     category: category,
                     tilt: tilts[Math.floor(Math.random() * tilts.length)]
                 };
 
                 memories.unshift(newMemory);
                 localStorage.setItem('lens_memories', JSON.stringify(memories));
-                renderGrid();
                 
-                // Sadece JSONbin'e veriyi yazar (Resim boyutu taşınmadığı için asla hata vermez)
+                // 1. Bulut veri tabanını güncelle
                 await saveToCloud(memories);
 
+                // 2. Formu temizle
                 document.getElementById('uploadForm').reset();
+                
+                // 3. Kullanıcıyı bilgilendir
                 alert("Anı ortak bulut günlüğüne başarıyla kaydedildi! ❤️");
+                
+                // 4. Arayüzü güncelle ve ana sekmeye yönlendir
                 switchTab('dashboard');
                 filterGallery('all');
             } catch (error) {

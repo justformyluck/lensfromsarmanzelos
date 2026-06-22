@@ -51,6 +51,7 @@
 </head>
 <body class="bg-cream-100 text-cocoa-900 min-height-screen font-sans selection:bg-amber-100 selection:text-amberAccent relative overflow-x-hidden">
 
+    <!-- ARKA PLAN ZENGİN STICKERLARI -->
     <div class="fixed inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-40">
         <img class="absolute top-[5%] left-[3%] w-20 h-20 rounded-xl border-4 border-white shadow-lg object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80">
         <img class="absolute top-[8%] left-[85%] w-16 h-16 rounded-full border-2 border-white shadow-md object-cover transform rotate-15" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80">
@@ -61,6 +62,7 @@
         <img class="absolute bottom-[15%] left-[82%] w-20 h-24 bg-white p-1 pb-5 shadow-lg object-cover transform rotate-6" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=150&q=80">
     </div>
 
+    <!-- 1. GİRİŞ PANELİ -->
     <div id="lockScreen" class="fixed inset-0 bg-cream-100 z-50 flex flex-col items-center justify-center p-6">
         <div class="max-w-md w-full text-center space-y-8 z-10">
             <div class="space-y-3">
@@ -89,6 +91,7 @@
         </div>
     </div>
 
+    <!-- 2. ANA ARAYÜZ -->
     <div id="mainApp" class="hidden min-h-screen flex flex-col fade-in relative z-10">
         <header class="bg-white/80 backdrop-blur-md border-b border-cream-300 sticky top-0 z-40 px-6 py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -111,6 +114,7 @@
         </header>
 
         <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-8">
+            <!-- DASHBOARD -->
             <div id="tab-dashboard" class="space-y-8 tab-content">
                 <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                     <div class="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-cream-300 shadow-sm flex items-center space-x-4">
@@ -136,6 +140,7 @@
                 <section id="photoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></section>
             </div>
 
+            <!-- TAB UPLOAD -->
             <div id="tab-upload" class="hidden space-y-8 tab-content">
                 <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-cream-300 space-y-6">
                     <div class="space-y-2 border-b border-cream-300 pb-5">
@@ -169,6 +174,7 @@
                             </div>
                         </div>
                         
+                        <!-- DOSYA SEÇME BUTONU -->
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğraf Seç</label>
                             <div class="flex items-center justify-center w-full">
@@ -195,6 +201,7 @@
         </main>
     </div>
 
+    <!-- DETAY MODAL -->
     <div id="detailModal" class="fixed inset-0 bg-cocoa-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="max-w-4xl w-full bg-cream-50 rounded-3xl shadow-2xl border border-cream-300 overflow-hidden flex flex-col md:flex-row relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 z-50 w-8 h-8 bg-white/80 hover:bg-red-50 text-cocoa-900 rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -220,10 +227,11 @@
         </div>
     </div>
 
+    <!-- JAVASCRIPT MOTORU -->
     <script>
         const JSONBIN_API_KEY = '$2a$10$1pZfam5rzDhruY.siK9v9eMdPi4D2uK/kQARojiA.hiW18/kGEczS';
         const BIN_ID = '6a383e76f5f4af5e29198dad';
-        const IMGBB_API_KEY = '5a44040a4df7028fa7270ea9436329fe'; // Kalıcı Görsel Motoru API Anahtarı
+        const IMGBB_API_KEY = '8298b67a85726faff6e8b8f88d9ac33a'; // Kendi orijinal anahtarınız geri entegre edildi
 
         let memories = [];
         let currentFilter = 'all';
@@ -384,7 +392,6 @@
         
         async function handleDelete() { if(currentModalItem) { await deleteCard(currentModalItem.id, null); closeModal(); } }
 
-        // PARALEL AJANLARLA GÜÇLENDİRİLMİŞ ÇİFT YÖNLÜ BULUT MOTORU
         async function handleUpload(event) {
             event.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
@@ -399,7 +406,7 @@
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Görsel Ajanı Buluta Yüklüyor...</span>`;
 
             try {
-                // AJAN 1: RESMİ ÜCRETSİZ BULUT DEPOLAMAYA YÜKLEME SÜRECİ
+                // AJAN 1: DOĞRUDAN DOSYAYI SİZİN HESABINIZA YÜKLEME
                 const file = fileInput.files[0];
                 const formData = new FormData();
                 formData.append('image', file);
@@ -415,10 +422,9 @@
                     throw new Error("Görsel buluta yüklenirken hata oluştu.");
                 }
 
-                // Sunucudan gelen kalıcı ve kararlı internet linki
                 const uploadedImgUrl = imgbbResult.data.url;
 
-                // AJAN 2: METİNLERİ VE OLUŞAN LİNKİ JSONBIN ORTAK VERİTABANINA YAZMA SÜRECİ
+                // AJAN 2: JSONBIN EŞİTLEME
                 submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Eşitleme Ajanı Ortak Havuzu Güncelleniyor...</span>`;
                 
                 const title = document.getElementById('form-title').value;

@@ -52,9 +52,13 @@
 <body class="bg-cream-100 text-cocoa-900 min-height-screen font-sans selection:bg-amber-100 selection:text-amberAccent relative overflow-x-hidden">
 
     <div class="fixed inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-40">
-        <img class="absolute top-[6%] left-[4%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80">
-        <img class="absolute top-[8%] left-[88%] w-12 h-12 rounded-full border-2 border-white shadow-md object-cover transform rotate-15" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80">
-        <img class="absolute top-[15%] left-[45%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-6" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute top-[5%] left-[3%] w-20 h-20 rounded-xl border-4 border-white shadow-lg object-cover transform -rotate-12" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute top-[8%] left-[85%] w-16 h-16 rounded-full border-2 border-white shadow-md object-cover transform rotate-15" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute top-[45%] left-[90%] w-24 h-24 rounded-xl border-4 border-white shadow-xl object-cover transform -rotate-6" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute top-[18%] left-[45%] w-14 h-14 rounded-full border-2 border-white shadow-md object-cover transform rotate-6" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute top-[32%] left-[5%] w-16 h-20 bg-white p-1 pb-4 shadow-md object-cover transform rotate-12" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute bottom-[10%] left-[8%] w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover transform -rotate-45" src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=150&q=80">
+        <img class="absolute bottom-[15%] left-[82%] w-20 h-24 bg-white p-1 pb-5 shadow-lg object-cover transform rotate-6" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=150&q=80">
     </div>
 
     <div id="lockScreen" class="fixed inset-0 bg-cream-100 z-50 flex flex-col items-center justify-center p-6">
@@ -100,7 +104,7 @@
                     <button onclick="switchTab('upload')" id="nav-upload" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900 flex items-center"><i class="fa-solid fa-cloud-arrow-up mr-1.5 text-amberAccent"></i> Fotoğraf Yükle</button>
                 </nav>
                 <div class="flex items-center space-x-4">
-                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🤝 Senkronizasyon Aktif</span>
+                    <span id="sync-status" class="inline-flex items-center px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">🤝 Çift Cihaz Senkronize</span>
                     <button onclick="lockApp()" class="p-2 text-cocoa-500 hover:text-red-500 transition-colors bg-cream-50 rounded-xl border border-cream-300 shadow-sm"><i class="fa-solid fa-lock"></i></button>
                 </div>
             </div>
@@ -136,7 +140,7 @@
                 <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-cream-300 space-y-6">
                     <div class="space-y-2 border-b border-cream-300 pb-5">
                         <h2 class="font-serif text-3xl font-bold text-cocoa-900">Yeni Bir Anı Kaydet</h2>
-                        <p class="text-xs text-cocoa-500">Hızlıresim.com veya benzeri bir siteye yüklediğiniz fotoğrafın doğrudan linkini yapıştırın.</p>
+                        <p class="text-xs text-cocoa-500">Cihazınızdan doğrudan fotoğraf seçin, sistem otomatik olarak ortak buluta yükleyecektir.</p>
                     </div>
                     <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -164,10 +168,20 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="space-y-1">
-                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğrafın Doğrudan Linki (URL)</label>
-                            <input type="url" id="form-url" placeholder="https://i.hizliresim.com/abcde.jpg" required class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none">
+                        
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-cocoa-700 uppercase">Fotoğraf Seç</label>
+                            <div class="flex items-center justify-center w-full">
+                                <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-cream-300 border-dashed rounded-2xl cursor-pointer bg-cream-50/50 hover:bg-cream-50 transition-colors">
+                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <i class="fa-solid fa-images text-2xl text-cocoa-500 mb-2"></i>
+                                        <p class="text-xs text-cocoa-700 font-medium" id="file-label-text">Fotoğraf yüklemek için tıklayın veya sürükleyin</p>
+                                    </div>
+                                    <input type="file" id="form-file" accept="image/*" required class="hidden" onchange="updateFileLabel()">
+                                </label>
+                            </div>
                         </div>
+
                         <div class="space-y-1">
                             <label class="block text-xs font-bold text-cocoa-700 uppercase">Anısı / Yorumunuz</label>
                             <textarea id="form-commentary" required rows="4" class="w-full bg-cream-50 border border-cream-300 rounded-xl px-4 py-3 text-sm focus:border-amberAccent focus:outline-none"></textarea>
@@ -209,8 +223,12 @@
     <script>
         const JSONBIN_API_KEY = '$2a$10$1pZfam5rzDhruY.siK9v9eMdPi4D2uK/kQARojiA.hiW18/kGEczS';
         const BIN_ID = '6a383e76f5f4af5e29198dad';
+        const IMGBB_API_KEY = '5a44040a4df7028fa7270ea9436329fe'; // Kalıcı Görsel Motoru API Anahtarı
 
         let memories = [];
+        let currentFilter = 'all';
+        let isPrivateUnlocked = false;
+        let currentModalItem = null;
 
         async function loadMemories() {
             try {
@@ -221,8 +239,6 @@
                 const result = await response.json();
                 if(result.record && result.record.memories) {
                     memories = result.record.memories;
-                } else {
-                    memories = [];
                 }
             } catch (error) {
                 console.error(error);
@@ -244,6 +260,15 @@
                 });
             } catch (error) {
                 console.error(error);
+            }
+        }
+
+        function updateFileLabel() {
+            const fileInput = document.getElementById('form-file');
+            const labelText = document.getElementById('file-label-text');
+            if(fileInput.files.length > 0) {
+                labelText.innerText = `Seçilen Dosya: ${fileInput.files[0].name}`;
+                labelText.className = "text-xs text-green-600 font-bold";
             }
         }
 
@@ -272,19 +297,15 @@
             document.getElementById('mainApp').classList.add('hidden');
         }
 
-        // SEKMELER ARASI GEÇİŞ MOTORU (GÜNCELLENDİ)
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
             
-            // Aktif menü butonunun görsel stilini güncelleme
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = "tab-btn px-4 py-2 text-xs font-bold rounded-lg text-cocoa-500 hover:text-cocoa-900";
             });
             const activeBtn = document.getElementById(`nav-${tabName}`);
-            if(activeBtn) {
-                activeBtn.className = "tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-white text-cocoa-900 shadow-sm";
-            }
+            if(activeBtn) activeBtn.className = "tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-white text-cocoa-900 shadow-sm";
         }
 
         function togglePrivateRoom() {
@@ -297,12 +318,10 @@
             }
         }
 
-        // FİLTRELEME MOTORU (GÜNCELLENDİ)
         function filterGallery(cat) { 
             currentFilter = cat; 
             renderGrid(); 
             
-            // Filtre butonlarının aktiflik stilini düzenleme
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-cocoa-900', 'text-white', 'shadow-sm');
                 btn.classList.add('bg-white', 'text-cocoa-700', 'border', 'border-cream-300');
@@ -365,20 +384,47 @@
         
         async function handleDelete() { if(currentModalItem) { await deleteCard(currentModalItem.id, null); closeModal(); } }
 
-        // FORM ONAYLAMA VE YAZMA MOTORU (SABİTLENDİ)
+        // PARALEL AJANLARLA GÜÇLENDİRİLMİŞ ÇİFT YÖNLÜ BULUT MOTORU
         async function handleUpload(event) {
             event.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
+            const fileInput = document.getElementById('form-file');
             
+            if(fileInput.files.length === 0) {
+                alert("Lütfen bir fotoğraf seçin.");
+                return;
+            }
+
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Bulut Günlüğü Güncelleniyor...</span>`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Görsel Ajanı Buluta Yüklüyor...</span>`;
 
             try {
+                // AJAN 1: RESMİ ÜCRETSİZ BULUT DEPOLAMAYA YÜKLEME SÜRECİ
+                const file = fileInput.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
+
+                const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const imgbbResult = await imgbbResponse.json();
+                
+                if(!imgbbResult.success) {
+                    throw new Error("Görsel buluta yüklenirken hata oluştu.");
+                }
+
+                // Sunucudan gelen kalıcı ve kararlı internet linki
+                const uploadedImgUrl = imgbbResult.data.url;
+
+                // AJAN 2: METİNLERİ VE OLUŞAN LİNKİ JSONBIN ORTAK VERİTABANINA YAZMA SÜRECİ
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> <span>Eşitleme Ajanı Ortak Havuzu Güncelleniyor...</span>`;
+                
                 const title = document.getElementById('form-title').value;
                 const location = document.getElementById('form-loc').value;
                 const date = document.getElementById('form-date').value;
                 const category = document.getElementById('form-category').value;
-                const imgUrl = document.getElementById('form-url').value;
                 const commentary = document.getElementById('form-commentary').value;
 
                 const tilts = ["tilt-left-small", "tilt-right-small", "tilt-left-med", "tilt-right-med"];
@@ -386,7 +432,7 @@
                 const newMemory = {
                     id: Date.now(),
                     title, location, date, commentary,
-                    img: imgUrl,
+                    img: uploadedImgUrl,
                     category: category,
                     tilt: tilts[Math.floor(Math.random() * tilts.length)]
                 };
@@ -394,21 +440,19 @@
                 memories.unshift(newMemory);
                 localStorage.setItem('lens_memories', JSON.stringify(memories));
                 
-                // 1. Bulut veri tabanını güncelle
                 await saveToCloud(memories);
 
-                // 2. Formu temizle
                 document.getElementById('uploadForm').reset();
+                document.getElementById('file-label-text').innerText = "Fotoğraf yüklemek için tıklayın veya sürükleyin";
+                document.getElementById('file-label-text').className = "text-xs text-cocoa-700 font-medium";
                 
-                // 3. Kullanıcıyı bilgilendir
-                alert("Anı ortak bulut günlüğüne başarıyla kaydedildi! ❤️");
+                alert("Anı ortak bulut günlüğüne başarıyla kaydedildi! Diğer tüm cihazlarda anında görünür hale geldi. ❤️");
                 
-                // 4. Arayüzü güncelle ve ana sekmeye yönlendir
                 switchTab('dashboard');
                 filterGallery('all');
             } catch (error) {
                 console.error(error);
-                alert("Senkronizasyon sırasında bir hata oluştu.");
+                alert("Bağlantı hatası veya senkronizasyon problemi oluştu. Lütfen tekrar deneyin.");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `<span>Anıyı Günlüğe Ekle</span>`;
